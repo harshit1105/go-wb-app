@@ -1,13 +1,14 @@
-name: CI
+name: CI/CD
 
+# Exclude the workflow to run on changes to the helm chart
 on:
   push:
     branches:
       - main
     paths-ignore:
-      - 'README.MD'
       - 'helm/**'
       - 'k8s/**'
+      - 'README.md'
 
 jobs:
 
@@ -24,9 +25,12 @@ jobs:
         go-version: 1.22
 
     - name: Build
-      run: go Test ./...
+      run: go build -o go-wb-app
 
-  code quality:
+    - name: Test
+      run: go test ./...
+  
+  code-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,11 +38,10 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-actions@v6
+      uses: golangci/golangci-lint-action@v6
       with:
         version: v1.56.2
-
-
+  
   push:
     runs-on: ubuntu-latest
 
@@ -82,9 +85,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --global user.email "harshit1105@gmail.com"
+        git config --global user.email "harshitsan@gmail.com"
         git config --global user.name "Harshit Sanchania"
         git add helm/go-wb-app-chart/values.yaml
         git commit -m "Update tag in Helm chart"
         git push
-
