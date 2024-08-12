@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: go-wb-app
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-targets /
+    nginx.ingress.kubernetes.io/rewrite-targets: /
 spec:
   ingressClassName: nginx
   rules:
