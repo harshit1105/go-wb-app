@@ -8,7 +8,7 @@ image:
   repository: harshit1105/go-wb-app-hk
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1"
+  tag: "10616569888"
 
 ingress:
   enabled: false
