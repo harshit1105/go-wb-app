@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: go-wb-app
-        image: harshit1105/go-wb-app:{{ .Values.image.tag }}
+        image: harshit1105/go-wb-app-hk:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
