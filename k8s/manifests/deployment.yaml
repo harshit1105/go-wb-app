@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: go-wb-app
-        image: harshit1105/go-wb-app:v1
+        image: harshit1105/go-wb-app-hk:v1
         ports:
         - containerPort: 8080
